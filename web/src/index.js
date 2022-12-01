@@ -4,6 +4,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 
 // Import CSS
+import "react-toastify/dist/ReactToastify.css";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import "bootstrap/dist/css/bootstrap.css";
 import "./index.css";
 
