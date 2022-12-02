@@ -25,18 +25,23 @@ export default function Header() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav navbar-dark ms-auto mb-2 mb-md-0 d-flex align-items-center">
             <li className="nav-item">
-              <NavLink className={({isActive}) => (isActive ? 'nav-link active' : 'nav-link')} to={`/about`}>
-                ABOUT
+              <NavLink className={({isActive}) => (isActive ? 'nav-link active' : 'nav-link')} to={`/gallery`}>
+                GALLERY
               </NavLink>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <NavLink className={({isActive}) => (isActive ? 'nav-link active' : 'nav-link')} to={`/contact`}>
                 CONTACT
               </NavLink>
-            </li>
+            </li> */}
+            {/* <li className="nav-item">
+              <NavLink className={({isActive}) => (isActive ? 'nav-link active' : 'nav-link')} to={`/about`}>
+                ABOUT
+              </NavLink>
+            </li> */}
             <li className="nav-item">
-              <NavLink className={({isActive}) => (isActive ? 'nav-link active' : 'nav-link')} to={`/guidelines`}>
-                GUIDELINES
+              <NavLink className={({isActive}) => (isActive ? 'nav-link active' : 'nav-link')} to={`/helpline`}>
+                HELPLINE
               </NavLink>
             </li>
             <li className="nav-item">

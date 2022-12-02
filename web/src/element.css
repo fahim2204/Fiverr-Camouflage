@@ -4,7 +4,7 @@
 }
 
 .shadow-cam-primary {
-    box-shadow: 0.02rem 0.02rem 0.3rem 0.10rem var(--cam-primary) !important;
+    box-shadow: 0.02rem 0.02rem 0.4rem 0.20rem var(--cam-primary) !important;
 }
 
 .hov-cl-cam-primary:hover {

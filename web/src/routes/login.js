@@ -30,14 +30,14 @@ export default function Login() {
         <title>{MainTitle} - Login</title>
       </Helmet>
       <div className="vh-100 d-flex align-items-center justify-content-center">
-        <div className="col-12 col-sm-8 col-md-6 col-lg-4 bg-light shadow-cam-primary d-flex flex-column align-items-center border rounded-3">
+        <div className="col-12 col-sm-8 col-md-6 col-lg-4 bg-light shadow-cam-primary d-flex flex-column align-items-center rounded-3">
           <Link to={`/`}>
             <img
               className="p-1 rounded-circle border shadow mt-3 mb-4"
               src={Images.Logo}
               alt="logo"
-              height={80}
-              width={80}
+              height={120}
+              width={120}
             />
           </Link>
           <p className="text-black mb-4">Welcome Back! Please Login</p>

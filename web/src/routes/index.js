@@ -1,8 +1,9 @@
 //Import React Library
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay, Grid, Lazy } from "swiper";
+import { Pagination, Autoplay, EffectFade, Lazy } from "swiper";
 
 // Import CSS
 // Import JS
@@ -12,7 +13,7 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import { MainTitle } from "../utils/variables";
 import { BiCamera } from "react-icons/bi";
-import {Images} from "../utils/images"
+import { Images } from "../utils/images"
 
 export default function Index() {
   const [selectedFile, setSelectedFile] = useState("");
@@ -48,96 +49,133 @@ export default function Index() {
         <title>{MainTitle} - Home</title>
       </Helmet>
       <Header />
-      <div className="sliderrr">
-        <Swiper
-        style={{
-          "--swiper-navigation-color": "#fff",
-          "--swiper-pagination-color": "#fff",
-        }}
-          slidesPerView={2}
-          slidesPerGroup={2}
-          spaceBetween={20}
-          loop={true}
-          // grid={{
-          //   rows: 2,
-          //   fill: "row",
-          // }}
-          lazy={true}
-          pagination={{
-            clickable: true,
-            dynamicBullets: true,
-          }}
-          autoplay={{
-            delay: 2000,
-            disableOnInteraction: false,
-            pauseOnMouseEnter:false,
-          }}
-          // breakpoints={{
-          //   "@0.00": {
-          //     slidesPerView: 1,
-          //     spaceBetween: 10,
-          //   },
-          //   "@0.75": {
-          //     slidesPerView: 2,
-          //     spaceBetween: 20,
-          //   },
-          //   "@1.00": {
-          //     slidesPerView: 3,
-          //     spaceBetween: 40,
-          //   },
-          //   "@1.50": {
-          //     slidesPerView: 4,
-          //     spaceBetween: 50,
-          //   },
-          // }}
-          modules={[Pagination,Autoplay,Grid, Lazy]}
-          className="mySwiper"
-        >
-          <SwiperSlide>
-              <img className="mx-1 img-fluid" src={Images.Up1} alt="gallery" />
-          </SwiperSlide>
-          <SwiperSlide>
-              <img className="mx-1 img-fluid" src={Images.Res1} alt="gallery" />
-          </SwiperSlide>
-          <SwiperSlide>
-              <img className="mx-1 img-fluid" src={Images.Up2} alt="gallery" />
-          </SwiperSlide>
-          <SwiperSlide>
-              <img className="mx-1 img-fluid" src={Images.Res2} alt="gallery" />
-          </SwiperSlide>
-          <SwiperSlide>
-              <img className="mx-1 img-fluid" src={Images.Up4} alt="gallery" />
-          </SwiperSlide>
-          <SwiperSlide>
-              <img className="mx-1 img-fluid" src={Images.Res4} alt="gallery" />
-          </SwiperSlide>
-        </Swiper>
-      </div>
-      <div className="my-5">
-        <img src={image} alt="" height={80} />
-        <div className="bg-light d-flex align-items-center mx-auto img-cont rounded" onClick={() => imageInputRef.current.click()}>
-          <BiCamera className="fs-4 text-black mx-2" />
-          <span className="text-black fw-bold">Detect Image</span>
-          <input
-            type="file"
-            name="image"
-            id="imageInput"
-            ref={imageInputRef}
-            onChange={(e) => setSelectedFile(e.target.files[0])}
-          />
+      <div className="row g-2">
+        <div className="col-12 col-md-6 mb-3 mb-md-0">
+          <Swiper
+            slidesPerView={1}
+            autoHeight={true}
+            loop={true}
+            lazy={true}
+            effect={"fade"}
+            autoplay={{
+              delay: 2000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: false,
+            }}
+            modules={[EffectFade, Autoplay, Lazy]}
+            className="mySwiper"
+          >
+            <SwiperSlide>
+              <img className="mx-1 img-fluid" src="/img/am-up-1.png" alt="gallery" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="mx-1 img-fluid" src="/img/am-rs-1.png" alt="gallery" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="mx-1 img-fluid" src="/img/am-up-2.png" alt="gallery" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="mx-1 img-fluid" src="/img/am-rs-2.png" alt="gallery" />
+            </SwiperSlide>
+          </Swiper>
+        </div>
+        <div className="col-12 col-md-6 mb-3 mb-md-0">
+          <Swiper
+            slidesPerView={1}
+            autoHeight={true}
+            loop={true}
+            lazy={true}
+            effect={"fade"}
+            autoplay={{
+              delay: 2000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: false,
+            }}
+            modules={[EffectFade, Autoplay, Lazy]}
+            className="mySwiper"
+          >
+            <SwiperSlide>
+              <img className="mx-1 img-fluid" src="/img/aq-up-1.png" alt="gallery" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="mx-1 img-fluid" src="/img/aq-rs-1.png" alt="gallery" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="mx-1 img-fluid" src="/img/aq-up-2.png" alt="gallery" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="mx-1 img-fluid" src="/img/aq-rs-2.png" alt="gallery" />
+            </SwiperSlide>
+          </Swiper>
         </div>
 
+        <div className="col-12 col-md-6 mb-3 mb-md-0">
+          <Swiper
+            slidesPerView={1}
+            autoHeight={true}
+            loop={true}
+            lazy={true}
+            effect={"fade"}
+            autoplay={{
+              delay: 2000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: false,
+            }}
+            modules={[EffectFade, Autoplay, Lazy]}
+            className="mySwiper"
+          >
+            <SwiperSlide>
+              <img className="mx-1 img-fluid" src="/img/fly-up-1.png" alt="gallery" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="mx-1 img-fluid" src="/img/fly-rs-1.png" alt="gallery" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="mx-1 img-fluid" src="/img/fly-up-2.png" alt="gallery" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="mx-1 img-fluid" src="/img/fly-rs-2.png" alt="gallery" />
+            </SwiperSlide>
+          </Swiper>
+        </div>
+        <div className="col-12 col-md-6 mb-3 mb-md-0">
+          <Swiper
+            slidesPerView={1}
+            autoHeight={true}
+            loop={true}
+            lazy={true}
+            effect={"fade"}
+            autoplay={{
+              delay: 2000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: false,
+            }}
+            modules={[EffectFade, Autoplay, Lazy]}
+            className="mySwiper"
+          >
+            <SwiperSlide>
+              <img className="mx-1 img-fluid" src="/img/ter-up-1.png" alt="gallery" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="mx-1 img-fluid" src="/img/ter-rs-1.png" alt="gallery" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="mx-1 img-fluid" src="/img/ter-up-2.png" alt="gallery" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="mx-1 img-fluid" src="/img/ter-rs-2.png" alt="gallery" />
+            </SwiperSlide>
+          </Swiper>
+        </div>
 
-
-        {/* <span id="imageupload">
-          <input
-            type="file"
-            name="image"
-            id="imageInput"
-            onChange={(e) => setSelectedFile(e.target.files[0])}
-          />
-          <BiCamera className="camicon" />
-        </span> */}
+      </div>
+      <div className="my-5">
+        <div className="text-center">
+          <Link to={`/image`} className="btn-cam-primary">
+            <BiCamera className="fs-4 mx-2" />
+            <span>Detect Image</span>
+          </Link>
+        </div>
       </div>
       <Footer />
     </>

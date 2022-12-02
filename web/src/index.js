@@ -6,6 +6,7 @@ import { HelmetProvider } from "react-helmet-async";
 // Import CSS
 import "react-toastify/dist/ReactToastify.css";
 import "swiper/css";
+import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import "swiper/css/grid";
 import "swiper/css/lazy";
@@ -24,14 +25,19 @@ import Register from "./routes/register";
 import About from "./routes/about";
 import Faq from "./routes/faq";
 import Gallery from "./routes/gallery";
-import Guidelines from "./routes/guidelines";
+import Helpline from "./routes/helpline";
 import Contact from "./routes/contact";
+import Image from "./routes/image";
 
 // All Routes
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Index />,
+  },
+  {
+    path: "/image",
+    element: <Image />,
   },
   {
     path: "/login",
@@ -54,8 +60,8 @@ const router = createBrowserRouter([
     element: <Gallery />,
   },
   {
-    path: "/guidelines",
-    element: <Guidelines />,
+    path: "/helpline",
+    element: <Helpline />,
   },
   {
     path: "/contact",
@@ -68,7 +74,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <HelmetProvider>
     <div className="container-fluid">
       <div className="container-lg">
-        <RouterProvider router={router}></RouterProvider>
+        <div className="vh-100 d-flex flex-column"><RouterProvider router={router}></RouterProvider></div>
       </div>
     </div>
   </HelmetProvider>

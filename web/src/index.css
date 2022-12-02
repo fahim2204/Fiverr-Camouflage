@@ -8,9 +8,15 @@ body {
     color: white;
 }
 
+a,
+a:hover {
+    color: unset;
+    text-decoration: none;
+}
+
 .swiper {
     width: 100%;
-    height: 20rem;
+    height: 100%;
     user-select: none;
 }
 
@@ -18,7 +24,6 @@ body {
     text-align: left;
     font-size: 22px;
     background: #1e232d;
-    /* height: 150px; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,12 +32,21 @@ body {
 
 /* .sliderrr {
     height: 400px !important;
-}
+} */
 
 .swiper-slide img {
-    height: 100%;
-    width: auto;
-} */
+    height: auto;
+    border-radius: 6px;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .swiper-slide img {
+        height: 300px;
+        border-radius: 6px;
+        width: auto;
+    }
+}
 
 
 /* .swiper-pagination-bullet {
@@ -62,4 +76,16 @@ body {
     background-color: #36599e !important;
     color: white !important;
     transition: all 0.3s;
+}
+
+
+/* SideMenu CSS */
+
+.sidemenu-cont {
+    width: 200px;
+    background-color: red;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    height: 100vh;
 }

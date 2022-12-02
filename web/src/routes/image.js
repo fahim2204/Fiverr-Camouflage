@@ -5,14 +5,14 @@
 // Import Components 
 import Header from "../components/header"
 import Footer from "../components/footer"
-import SideMenu from "../components/sidemenu"
 
-export default function Contact() {
+export default function Image() {
   return (
     <>
       <Header/>
-      <SideMenu/>
-      <div>You are on Contact</div>
+     <div className="my-auto">
+      hello
+     </div>
       <Footer/>
     </>
   )
