@@ -16,10 +16,10 @@ export default function Register() {
         <title>{MainTitle} - Register</title>
       </Helmet>
       <div className="vh-100 d-flex align-items-center justify-content-center">
-        <div className="col-12 col-sm-8 col-md-6 col-lg-4 bg-light shadow d-flex flex-column align-items-center border rounded-3">
+        <div className="col-12 col-sm-8 col-md-6 col-lg-4 bg-light shadow-cam-primary d-flex flex-column align-items-center border rounded-3">
           <Link to={`/`}>
             <img
-              className="p-2 rounded-circle border shadow mt-3 mb-4"
+              className="p-1 rounded-circle border shadow mt-3 mb-4"
               src={Images.Logo}
               alt="logo"
               height={80}
@@ -40,9 +40,9 @@ export default function Register() {
             <input className="form-control py-2" type="password" name="confirm-password" id="confirm-password" placeholder="Confirm Password" />
           </div>
           <div className="text-center">
-            <button className="btn btn-primary mt-3">Register</button>
+            <button className="btn-cam-primary mt-3">Register</button>
           </div>
-          <p className="text-muted my-3">Already Registered? <Link to={`/login`}>Login</Link></p>
+          <p className="text-muted my-3">Already Registered? <Link className="hov-cl-cam-primary" to={`/login`}>Login</Link></p>
         </div>
       </div>
     </>

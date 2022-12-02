@@ -7,9 +7,12 @@ import { HelmetProvider } from "react-helmet-async";
 import "react-toastify/dist/ReactToastify.css";
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/grid";
+import "swiper/css/lazy";
 import "swiper/css/pagination";
 import "bootstrap/dist/css/bootstrap.css";
 import "./index.css";
+import "./element.css";
 
 // Import JS
 import "bootstrap/dist/js/bootstrap.bundle.min";
