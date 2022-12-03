@@ -1,53 +1,67 @@
 body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background-color: #1e232d;
-    /* background-color: #282c34; */
-    color: white;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--cam-dark);
+  color: white;
 }
 
 a,
 a:hover {
-    color: unset;
-    text-decoration: none;
+  color: unset;
+  text-decoration: none;
 }
 
 .swiper {
-    width: 100%;
-    height: 100%;
-    user-select: none;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+}
+.slider-g1 {
+  position: relative;
 }
 
 .swiper-slide {
-    text-align: left;
-    font-size: 22px;
-    background: #1e232d;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  text-align: left;
+  font-size: 22px;
+  background: #1e232d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
+.slider-g1 .slider-title {
+  position: absolute;
+  bottom: 0px;
+  z-index: 1;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #ffffff;
+  background-color: rgba(var(--cam-primary-cd), 0.6);
+  padding: 0px 12px;
+  border-radius: 6px 6px 0 0;
+  font-size: calc(0.8rem + 1vw);
+  user-select: none;
+}
 
 /* .sliderrr {
     height: 400px !important;
 } */
 
 .swiper-slide img {
-    height: auto;
-    border-radius: 6px;
-    width: 100%;
+  height: auto;
+  border-radius: 6px;
+  width: 100%;
 }
 
 @media (min-width: 768px) {
-    .swiper-slide img {
-        height: 300px;
-        border-radius: 6px;
-        width: auto;
-    }
+  .swiper-slide img {
+    height: 300px;
+    border-radius: 6px;
+    width: auto;
+  }
 }
-
 
 /* .swiper-pagination-bullet {
     width: 20px;
@@ -58,34 +72,55 @@ a:hover {
     opacity: var(--swiper-pagination-bullet-inactive-opacity, 0.5);
 } */
 
-
 /* Image Upload Design */
 
-.img-cont {
-    width: 180px;
-    height: 40px;
-    font-size: 18px;
-    cursor: pointer;
+.img-up-con {
+  position: relative;
+}
+.hov-img-ic {
+  display: none;
+}
+.img-up-con:hover .hov-img-ic {
+  position: absolute;
+  display: block;
+  z-index: 200;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s;
 }
 
-.img-cont input {
-    display: none;
+.img-up-con input {
+  display: none;
 }
 
 .img-cont:hover {
-    background-color: #36599e !important;
-    color: white !important;
-    transition: all 0.3s;
+  background-color: #36599e !important;
+  color: white !important;
+  transition: all 0.3s;
 }
-
 
 /* SideMenu CSS */
 
 .sidemenu-cont {
-    width: 200px;
-    background-color: red;
-    position: absolute;
-    top: 0px;
-    left: 0;
-    height: 100vh;
+  width: 200px;
+  background-color: red;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  height: 100vh;
+}
+
+/* HELPLine CSS */
+.accordion-item {
+  color: white;
+  background-color: var(--cam-dark-light2);
+}
+.accordion-button:not(.collapsed) {
+  color: white;
+  background-color: var(--cam-dark-light);
+}
+.accordion-button {
+  color: white;
+  background-color: var(--cam-dark-light);
 }

@@ -13,11 +13,11 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import { MainTitle } from "../utils/variables";
 import { BiCamera } from "react-icons/bi";
-import { Images } from "../utils/images"
+import { Images } from "../utils/images";
 
 export default function Index() {
   const [selectedFile, setSelectedFile] = useState("");
-  const imageInputRef = useRef(null)
+  const imageInputRef = useRef(null);
   const [imgBase64, setImgBase64] = useState("");
   const [image, setImage] = useState("");
 
@@ -49,8 +49,8 @@ export default function Index() {
         <title>{MainTitle} - Home</title>
       </Helmet>
       <Header />
-      <div className="row g-2">
-        <div className="col-12 col-md-6 mb-3 mb-md-0">
+      <div className="row g-2 g-lg-4">
+        <div className="col-12 col-md-6 mb-3 mb-md-0 slider-g1">
           <Swiper
             slidesPerView={1}
             autoHeight={true}
@@ -66,20 +66,21 @@ export default function Index() {
             className="mySwiper"
           >
             <SwiperSlide>
-              <img className="mx-1 img-fluid" src="/img/am-up-1.png" alt="gallery" />
+              <img className="img-fluid" src="/img/am-up-1.png" alt="gallery" />
             </SwiperSlide>
             <SwiperSlide>
-              <img className="mx-1 img-fluid" src="/img/am-rs-1.png" alt="gallery" />
+              <img className="img-fluid" src="/img/am-rs-1.png" alt="gallery" />
             </SwiperSlide>
             <SwiperSlide>
-              <img className="mx-1 img-fluid" src="/img/am-up-2.png" alt="gallery" />
+              <img className="img-fluid" src="/img/am-up-2.png" alt="gallery" />
             </SwiperSlide>
             <SwiperSlide>
-              <img className="mx-1 img-fluid" src="/img/am-rs-2.png" alt="gallery" />
+              <img className="img-fluid" src="/img/am-rs-2.png" alt="gallery" />
             </SwiperSlide>
           </Swiper>
+          <span className="slider-title">Amphiabians</span>
         </div>
-        <div className="col-12 col-md-6 mb-3 mb-md-0">
+        <div className="col-12 col-md-6 mb-3 mb-md-0 slider-g1">
           <Swiper
             slidesPerView={1}
             autoHeight={true}
@@ -95,79 +96,81 @@ export default function Index() {
             className="mySwiper"
           >
             <SwiperSlide>
-              <img className="mx-1 img-fluid" src="/img/aq-up-1.png" alt="gallery" />
+              <img className="img-fluid" src="/img/aq-up-1.png" alt="gallery" />
             </SwiperSlide>
             <SwiperSlide>
-              <img className="mx-1 img-fluid" src="/img/aq-rs-1.png" alt="gallery" />
+              <img className="img-fluid" src="/img/aq-rs-1.png" alt="gallery" />
             </SwiperSlide>
             <SwiperSlide>
-              <img className="mx-1 img-fluid" src="/img/aq-up-2.png" alt="gallery" />
+              <img className="img-fluid" src="/img/aq-up-2.png" alt="gallery" />
             </SwiperSlide>
             <SwiperSlide>
-              <img className="mx-1 img-fluid" src="/img/aq-rs-2.png" alt="gallery" />
+              <img className="img-fluid" src="/img/aq-rs-2.png" alt="gallery" />
             </SwiperSlide>
           </Swiper>
-        </div>
-
-        <div className="col-12 col-md-6 mb-3 mb-md-0">
-          <Swiper
-            slidesPerView={1}
-            autoHeight={true}
-            loop={true}
-            lazy={true}
-            effect={"fade"}
-            autoplay={{
-              delay: 2000,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: false,
-            }}
-            modules={[EffectFade, Autoplay, Lazy]}
-            className="mySwiper"
-          >
-            <SwiperSlide>
-              <img className="mx-1 img-fluid" src="/img/fly-up-1.png" alt="gallery" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img className="mx-1 img-fluid" src="/img/fly-rs-1.png" alt="gallery" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img className="mx-1 img-fluid" src="/img/fly-up-2.png" alt="gallery" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img className="mx-1 img-fluid" src="/img/fly-rs-2.png" alt="gallery" />
-            </SwiperSlide>
-          </Swiper>
-        </div>
-        <div className="col-12 col-md-6 mb-3 mb-md-0">
-          <Swiper
-            slidesPerView={1}
-            autoHeight={true}
-            loop={true}
-            lazy={true}
-            effect={"fade"}
-            autoplay={{
-              delay: 2000,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: false,
-            }}
-            modules={[EffectFade, Autoplay, Lazy]}
-            className="mySwiper"
-          >
-            <SwiperSlide>
-              <img className="mx-1 img-fluid" src="/img/ter-up-1.png" alt="gallery" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img className="mx-1 img-fluid" src="/img/ter-rs-1.png" alt="gallery" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img className="mx-1 img-fluid" src="/img/ter-up-2.png" alt="gallery" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img className="mx-1 img-fluid" src="/img/ter-rs-2.png" alt="gallery" />
-            </SwiperSlide>
-          </Swiper>
+          <span className="slider-title">Aquatic</span>
         </div>
 
+        <div className="col-12 col-md-6 mb-3 mb-md-0 slider-g1">
+          <Swiper
+            slidesPerView={1}
+            autoHeight={true}
+            loop={true}
+            lazy={true}
+            effect={"fade"}
+            autoplay={{
+              delay: 2000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: false,
+            }}
+            modules={[EffectFade, Autoplay, Lazy]}
+            className="mySwiper"
+          >
+            <SwiperSlide>
+              <img className="img-fluid" src="/img/fly-up-1.png" alt="gallery" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="img-fluid" src="/img/fly-rs-1.png" alt="gallery" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="img-fluid" src="/img/fly-up-2.png" alt="gallery" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="img-fluid" src="/img/fly-rs-2.png" alt="gallery" />
+            </SwiperSlide>
+          </Swiper>
+          <span className="slider-title">Flying</span>
+        </div>
+        <div className="col-12 col-md-6 mb-3 mb-md-0 slider-g1">
+          <Swiper
+            slidesPerView={1}
+            autoHeight={true}
+            loop={true}
+            lazy={true}
+            effect={"fade"}
+            autoplay={{
+              delay: 2000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: false,
+            }}
+            modules={[EffectFade, Autoplay, Lazy]}
+            className="mySwiper"
+          >
+            <SwiperSlide>
+              <img className="img-fluid" src="/img/ter-up-1.png" alt="gallery" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="img-fluid" src="/img/ter-rs-1.png" alt="gallery" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="img-fluid" src="/img/ter-up-2.png" alt="gallery" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="img-fluid" src="/img/ter-rs-2.png" alt="gallery" />
+            </SwiperSlide>
+          </Swiper>
+          <span className="slider-title">Terrestrial</span>
+        </div>
       </div>
       <div className="my-5">
         <div className="text-center">

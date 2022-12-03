@@ -60,7 +60,7 @@ export default function Login() {
             />
           </div>
           <div className="text-center">
-            <button className="btn btn-primary mt-3" onClick={notify}>
+            <button className="btn-cam-primary mt-3" onClick={notify}>
               Login
             </button>
           </div>

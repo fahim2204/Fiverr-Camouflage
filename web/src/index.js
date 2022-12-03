@@ -12,8 +12,8 @@ import "swiper/css/grid";
 import "swiper/css/lazy";
 import "swiper/css/pagination";
 import "bootstrap/dist/css/bootstrap.css";
-import "./index.css";
 import "./element.css";
+import "./index.css";
 
 // Import JS
 import "bootstrap/dist/js/bootstrap.bundle.min";
@@ -23,11 +23,13 @@ import Index from "./routes";
 import Login from "./routes/login";
 import Register from "./routes/register";
 import About from "./routes/about";
-import Faq from "./routes/faq";
 import Gallery from "./routes/gallery";
 import Helpline from "./routes/helpline";
 import Contact from "./routes/contact";
 import Image from "./routes/image";
+import Result from "./routes/result";
+import Profile from "./routes/profile";
+import Feedback from "./routes/feedback";
 
 // All Routes
 const router = createBrowserRouter([
@@ -40,6 +42,10 @@ const router = createBrowserRouter([
     element: <Image />,
   },
   {
+    path: "/result",
+    element: <Result />,
+  },
+  {
     path: "/login",
     element: <Login />,
   },
@@ -48,16 +54,20 @@ const router = createBrowserRouter([
     element: <Register />,
   },
   {
+    path: "/profile",
+    element: <Profile />,
+  },
+  {
     path: "/about",
     element: <About />,
   },
   {
-    path: "/faq",
-    element: <Faq />,
-  },
-  {
     path: "/gallery",
     element: <Gallery />,
+  },
+  {
+    path: "/feedback",
+    element: <Feedback />,
   },
   {
     path: "/helpline",
