@@ -109,39 +109,61 @@ a:hover {
 
 /* SideMenu CSS */
 
-.sidemenu-cont {
+#sidebar {
+    background: var(--cam-dark-light2);
+    width: 180px;
+    height: 400px;
+    display: block;
     position: absolute;
+    left: -180px;
     top: 50%;
-    left: 0;
     transform: translateY(-50%);
+    border-radius: 0 6px 6px 0;
+    transition: left 0.3s linear;
+    z-index: 9999;
 }
 
-.sidemenu-cont ul {
+#sidebar.visible {
+    left: 0px;
+    transition: left 0.3s linear;
+}
+
+#sidebar ul {
+    margin: 0px;
+    padding: 0px;
     list-style: none;
-    margin: 0;
-    padding: 0;
+    margin-right: 8px;
 }
 
-.sidemenu-cont ul li {
-    background-color: var(--cam-primary);
-    margin: 8px 0;
-    border-radius: 0 5px 5px 0;
-    transition: .3s ease-in-out;
-    transform: translateX(-55px);
+#sidebar li {
+    /* background-color: var(--cam-dark); */
+    padding: 5px 0 5px 15px;
+    transition: 0.3s ease-in-out;
 }
 
-.sidemenu-cont ul li:hover {
-    transform: translateX(0px);
-    transition: .3s ease-in-out;
+#sidebar li:hover,
+.lgt:hover {
+    background-color: var(--cam-dark);
+    transition: 0.3s ease-in-out;
 }
 
-.sidemenu-cont ul .l-cont {
-    padding: 5px 5px 5px 8px;
-    font-size: 16px;
-}
-
-.sidemenu-cont ul .l-cont svg {
-    font-size: 20px;
+#sidebar-btn {
+    display: inline-block;
+    vertical-align: middle;
+    width: 28px;
+    height: 35px;
+    cursor: pointer;
+    margin: 10px;
+    position: absolute;
+    top: calc(50% - 72px);
+    right: -38px;
+    border-radius: 0 6px 6px 0;
+    background-color: var(--cam-dark-light2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    box-shadow: 1px 1px 1px 0px white;
 }
 
 

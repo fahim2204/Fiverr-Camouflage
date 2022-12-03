@@ -11,7 +11,6 @@ export default function Contact() {
   return (
     <>
       <Header/>
-      <SideMenu/>
       <div>You are on Contact</div>
       <Footer/>
     </>

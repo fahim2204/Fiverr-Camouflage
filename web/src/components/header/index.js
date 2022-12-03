@@ -6,10 +6,12 @@ import { NavLink } from "react-router-dom";
 
 // Import Components
 import {Images} from "../../utils/images"
+import SideMenu from "../sidemenu";
 
 export default function Header() {
   return (
     <>
+    <SideMenu/>
       <nav className="navbar navbar-expand-md mt-2 mb-4 p-0">
         <NavLink className="navbar-brand text-white p-0" to={`/`}>
         <img src={Images.Logo} alt="logo" height={55} />
