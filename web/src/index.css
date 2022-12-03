@@ -110,12 +110,38 @@ a:hover {
 /* SideMenu CSS */
 
 .sidemenu-cont {
-    width: 200px;
-    background-color: red;
     position: absolute;
-    top: 0px;
+    top: 50%;
     left: 0;
-    height: 100vh;
+    transform: translateY(-50%);
+}
+
+.sidemenu-cont ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidemenu-cont ul li {
+    background-color: var(--cam-primary);
+    margin: 8px 0;
+    border-radius: 0 5px 5px 0;
+    transition: .3s ease-in-out;
+    transform: translateX(-55px);
+}
+
+.sidemenu-cont ul li:hover {
+    transform: translateX(0px);
+    transition: .3s ease-in-out;
+}
+
+.sidemenu-cont ul .l-cont {
+    padding: 5px 5px 5px 8px;
+    font-size: 16px;
+}
+
+.sidemenu-cont ul .l-cont svg {
+    font-size: 20px;
 }
 
 

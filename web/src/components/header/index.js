@@ -30,18 +30,18 @@ export default function Header() {
               </NavLink>
             </li>
             {/* <li className="nav-item">
-              <NavLink className={({isActive}) => (isActive ? 'nav-link active' : 'nav-link')} to={`/contact`}>
-                CONTACT
-              </NavLink>
-            </li> */}
-            {/* <li className="nav-item">
               <NavLink className={({isActive}) => (isActive ? 'nav-link active' : 'nav-link')} to={`/about`}>
-                ABOUT
+              ABOUT
               </NavLink>
             </li> */}
             <li className="nav-item">
               <NavLink className={({isActive}) => (isActive ? 'nav-link active' : 'nav-link')} to={`/helpline`}>
                 HELPLINE
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className={({isActive}) => (isActive ? 'nav-link active' : 'nav-link')} to={`/contact`}>
+                CONTACT
               </NavLink>
             </li>
             <li className="nav-item">
