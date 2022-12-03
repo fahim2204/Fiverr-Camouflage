@@ -2,32 +2,40 @@
     --cam-primary-cd: 179, 61, 61;
     --cam-primary: hsl(0, 49%, 47%);
     --cam-primary-light: hsl(0, 49%, 52%);
+    --cam-primary-light2: hsl(0, 55%, 60%);
     --cam-dark: hsl(220, 20%, 15%);
     --cam-dark-light: hsl(220, 20%, 20%);
     --cam-dark-light2: hsl(220, 25%, 25%);
 }
-.cursor-pointer{
+
+.cursor-pointer {
     cursor: pointer;
 }
+
 .shadow-cam-primary {
     box-shadow: 0.02rem 0.02rem 0.4rem 0.20rem var(--cam-primary) !important;
 }
+
 .text-shadow-cam-primary {
     text-shadow: 2px 2px var(--cam-primary) !important;
 }
 
-.cl-cam-primary{
+.cl-cam-primary {
     color: var(--cam-primary) !important;
 }
-.bg-cam-primary{
+
+.bg-cam-primary {
     background-color: var(--cam-primary) !important;
 }
-.bg-cam-dark-light{
+
+.bg-cam-dark-light {
     background-color: var(--cam-dark-light) !important;
 }
-.bg-cam-dark-light2{
+
+.bg-cam-dark-light2 {
     background-color: var(--cam-dark-light2) !important;
 }
+
 .hov-cl-cam-primary:hover {
     color: var(--cam-primary);
 }

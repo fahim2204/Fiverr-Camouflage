@@ -17,6 +17,10 @@ export default function Gallery() {
             <img className="img-fluid w-50" src="/img/am-rs-1.png" alt="gallery" />
           </div>
           <div className="bg-cam-dark-light2 p-1 rounded shadow-sm mb-2">
+            <img className="img-fluid w-50" src="/img/am-up-2.png" alt="gallery" />
+            <img className="img-fluid w-50" src="/img/am-rs-2.png" alt="gallery" />
+          </div>
+          <div className="bg-cam-dark-light2 p-1 rounded shadow-sm mb-2">
             <img className="img-fluid w-50" src="/img/fly-up-1.png" alt="gallery" />
             <img className="img-fluid w-50" src="/img/fly-rs-1.png" alt="gallery" />
           </div>
@@ -27,8 +31,16 @@ export default function Gallery() {
             <img className="img-fluid w-50" src="/img/aq-rs-1.png" alt="gallery" />
           </div>
           <div className="bg-cam-dark-light2 p-1 rounded shadow-sm mb-2">
+            <img className="img-fluid w-50" src="/img/aq-up-2.png" alt="gallery" />
+            <img className="img-fluid w-50" src="/img/aq-rs-2.png" alt="gallery" />
+          </div>
+          <div className="bg-cam-dark-light2 p-1 rounded shadow-sm mb-2">
             <img className="img-fluid w-50" src="/img/ter-up-1.png" alt="gallery" />
             <img className="img-fluid w-50" src="/img/ter-rs-1.png" alt="gallery" />
+          </div>
+          <div className="bg-cam-dark-light2 p-1 rounded shadow-sm mb-2">
+            <img className="img-fluid w-50" src="/img/ter-up-2.png" alt="gallery" />
+            <img className="img-fluid w-50" src="/img/ter-rs-2.png" alt="gallery" />
           </div>
         </div>
       </div>
