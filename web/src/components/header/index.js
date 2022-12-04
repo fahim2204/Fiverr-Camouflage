@@ -31,11 +31,11 @@ export default function Header() {
                 GALLERY
               </NavLink>
             </li>
-            {/* <li className="nav-item">
+            <li className="nav-item">
               <NavLink className={({isActive}) => (isActive ? 'nav-link active' : 'nav-link')} to={`/about`}>
               ABOUT
               </NavLink>
-            </li> */}
+            </li>
             <li className="nav-item">
               <NavLink className={({isActive}) => (isActive ? 'nav-link active' : 'nav-link')} to={`/helpline`}>
                 HELPLINE

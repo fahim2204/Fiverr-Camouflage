@@ -11,7 +11,7 @@ export default function Feedback() {
   return (
     <>
       <Header />
-      <div className="col-7 mx-auto">
+      <div className="col-12 col-md-7 mx-auto">
         <div className="text-center my-3">
           <span className="fs-4">YOUR FEEDBACK</span>
         </div>

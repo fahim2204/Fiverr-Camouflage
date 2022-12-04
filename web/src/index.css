@@ -243,3 +243,18 @@ a:hover {
     border: 1px solid var(--cam-primary);
     box-shadow: 0 0 10px 0px var(--cam-primary);
 }
+
+#navbarSupportedContent .navbar-nav .show>.nav-link,
+#navbarSupportedContent .navbar-nav .nav-link.active {
+    /* color: var(--cam-primary); */
+    padding: 4px;
+    border-bottom: 3px solid var(--cam-primary);
+    transition: 0.3s ease-in-out;
+}
+
+#navbarSupportedContent .navbar-nav .nav-link:hover {
+    color: var(--cam-primary);
+    /* padding: 4px; */
+    /* border-bottom: 2px solid var(--cam-primary); */
+    transition: 0.3s ease-in-out;
+}
