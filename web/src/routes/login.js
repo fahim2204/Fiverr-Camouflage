@@ -1,7 +1,9 @@
 //Import React Library
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 // Import CSS
 // Import JS
@@ -9,19 +11,43 @@ import { ToastContainer, toast } from "react-toastify";
 // Import Components
 import { MainTitle } from "../utils/variables";
 import { Images } from "../utils/images";
+import { apiUrl } from "../utils/config";
 
 export default function Login() {
-  const notify = () => toast("Login Succesfull!");
+  const navigate = useNavigate()
+  const [loginData, setLoginData] = useState({});
+
+  const handleLoginData = (e) => {
+    setLoginData({ ...loginData, [e.target.name]: e.target.value });
+  };
+
+  const doLoginRequest = () => {
+    if(!loginData["username"] || !loginData["password"]){
+      notify("Fill Username & Password")
+    }else{
+      axios
+        .post(`${apiUrl}/login`, loginData)
+        .then((x) => {
+          notify("login Succesfull!!");
+          localStorage.setItem("token",x.data);
+          navigate("/")
+        })
+        .catch((e) => {
+          e.response.data.message ? notify(e.response.data.message) : console.log("Error>> ", e);
+        });
+    }
+  };
+
+  const notify = (msg) => toast(msg);
   return (
     <>
       <ToastContainer
         position="top-right"
-        autoClose={4000}
+        autoClose={1000}
         hideProgressBar={false}
         newestOnTop={true}
-        closeOnClick
+        closeOnClick={true}
         rtl={false}
-        pauseOnFocusLoss
         draggable
         pauseOnHover
         theme="light"
@@ -46,8 +72,10 @@ export default function Login() {
               className="form-control py-2"
               type="text"
               name="username"
-              id="username"
               placeholder="Username"
+              onChange={(e) => {
+                handleLoginData(e);
+              }}
             />
           </div>
           <div className="mb-3 w-100 px-4">
@@ -55,17 +83,22 @@ export default function Login() {
               className="form-control py-2"
               type="password"
               name="password"
-              id="password"
               placeholder="Password"
+              onChange={(e) => {
+                handleLoginData(e);
+              }}
             />
           </div>
           <div className="text-center">
-            <button className="btn-cam-primary mt-3" onClick={notify}>
+            <button className="btn-cam-primary mt-3" onClick={doLoginRequest}>
               Login
             </button>
           </div>
           <p className="text-muted my-3">
-            Not Registered Yet? <Link className="hov-cl-cam-primary" to={`/register`}>Register</Link>
+            Not Registered Yet?{" "}
+            <Link className="hov-cl-cam-primary" to={`/register`}>
+              Register
+            </Link>
           </p>
         </div>
       </div>
