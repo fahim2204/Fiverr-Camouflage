@@ -1,6 +1,9 @@
 //Import React Library
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 // Import CSS
 // Import JS
@@ -8,10 +11,54 @@ import { Link } from "react-router-dom";
 // Import Components
 import { MainTitle } from "../utils/variables";
 import { Images } from "../utils/images";
+import { apiUrl, axiosAuth } from "../utils/config";
 import Header from "../components/header";
 import Footer from "../components/footer";
 
 export default function Profile() {
+  const navigate = useNavigate();
+  const [profileData, setProfileData] = useState();
+  const [token, setToken] = useState();
+
+  useEffect(() => {
+    setToken(localStorage.getItem("token"));
+  }, []);
+
+  const notify = (msg) =>
+    toast(msg, {
+      position: "bottom-right",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+      theme: "light",
+    });
+
+  useEffect(() => {
+    token &&
+      axios
+        .get(`${apiUrl}/profile`, {
+          headers: {
+            token: token,
+          },
+        })
+        .then((x) => {
+          setProfileData(x.data);
+        })
+        .catch(() => {
+          setTimeout(() => {
+            navigate("/login");
+          }, 200);
+          notify("Please Login again!!");
+        });
+  }, [token]);
+
+  useEffect(() => {
+    console.log("profileData>>", profileData);
+  }, [profileData]);
+
   return (
     <>
       <Helmet>
@@ -38,7 +85,12 @@ export default function Profile() {
                 Full Name:
               </label>
               <div className="col-sm-9">
-                <input className="form-control py-2" type="text" name="fullname" id="fullname" />
+                <input
+                  className="form-control py-2"
+                  type="text"
+                  name="fullname"
+                  value={profileData?.fullName}
+                />
               </div>
             </div>
             <div className="mb-4 row">
@@ -59,7 +111,7 @@ export default function Profile() {
                 Gender:
               </label>
               <div className="col-sm-9">
-                <select class="form-select" id="gender">
+                <select className="form-select" id="gender">
                   <option selected>Select Gender</option>
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
@@ -72,7 +124,12 @@ export default function Profile() {
                 Email:
               </label>
               <div className="col-sm-9">
-                <input className="form-control py-2" type="text" name="email" id="email" />
+                <input
+                  className="form-control py-2"
+                  type="text"
+                  name="email"
+                  id="email"
+                />
               </div>
             </div>
             <div className="mb-4 row">
@@ -80,7 +137,12 @@ export default function Profile() {
                 Country:
               </label>
               <div className="col-sm-9">
-                <input className="form-control py-2" type="text" name="country" id="country" />
+                <input
+                  className="form-control py-2"
+                  type="text"
+                  name="country"
+                  id="country"
+                />
               </div>
             </div>
             <div className="mb-4 row">
@@ -88,7 +150,7 @@ export default function Profile() {
                 City:
               </label>
               <div className="col-sm-9">
-                <select class="form-select" name="city" id="city" required>
+                <select className="form-select" name="city" id="city" required>
                   <option value="" disabled selected>
                     Select The City
                   </option>
@@ -247,7 +309,9 @@ export default function Profile() {
                   <option value="Tangwani">Tangwani</option>
                   <option value="Tando Adam Khan">Tando Adam Khan</option>
                   <option value="Tando Allahyar">Tando Allahyar</option>
-                  <option value="Tando Muhammad Khan">Tando Muhammad Khan</option>
+                  <option value="Tando Muhammad Khan">
+                    Tando Muhammad Khan
+                  </option>
                   <option value="Thatta">Thatta</option>
                   <option value="Umerkot">Umerkot</option>
                   <option value="Warah">Warah</option>

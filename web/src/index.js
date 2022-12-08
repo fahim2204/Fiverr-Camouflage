@@ -2,6 +2,7 @@
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
+import { ToastContainer } from "react-toastify";
 
 // Import CSS
 import "react-toastify/dist/ReactToastify.css";
@@ -83,6 +84,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <HelmetProvider>
     <div className="container-fluid">
+    <ToastContainer />
       <div className="container-lg">
         <div className="vh-100 d-flex flex-column"><RouterProvider router={router}></RouterProvider></div>
       </div>

@@ -66,7 +66,6 @@ export default function Register() {
       <Helmet>
         <title>{MainTitle} - Register</title>
       </Helmet>
-      <ToastContainer />
       <div className="vh-100 d-flex align-items-center justify-content-center">
         <div className="col-12 col-sm-8 col-md-6 col-lg-4 bg-light shadow-cam-primary d-flex flex-column align-items-center rounded-3">
           <Link to={`/`}>

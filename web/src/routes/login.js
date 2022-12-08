@@ -17,6 +17,18 @@ export default function Login() {
   const navigate = useNavigate()
   const [loginData, setLoginData] = useState({});
 
+  const notify = (msg) =>
+  toast(msg, {
+    position: "bottom-right",
+    autoClose: 1000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: false,
+    progress: undefined,
+    theme: "light",
+  });
+
   const handleLoginData = (e) => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };
@@ -28,8 +40,8 @@ export default function Login() {
       axios
         .post(`${apiUrl}/login`, loginData)
         .then((x) => {
-          notify("login Succesfull!!");
           localStorage.setItem("token",x.data);
+          notify("login Succesfull!!");
           navigate("/")
         })
         .catch((e) => {
@@ -38,20 +50,8 @@ export default function Login() {
     }
   };
 
-  const notify = (msg) => toast(msg);
   return (
     <>
-      <ToastContainer
-        position="top-right"
-        autoClose={1000}
-        hideProgressBar={false}
-        newestOnTop={true}
-        closeOnClick={true}
-        rtl={false}
-        draggable
-        pauseOnHover
-        theme="light"
-      />
       <Helmet>
         <title>{MainTitle} - Login</title>
       </Helmet>
