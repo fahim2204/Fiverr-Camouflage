@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 // Import CSS
-// Import JS
 
 // Import Components
 import Header from "../components/header";
@@ -33,7 +32,7 @@ export default function Image() {
       return;
     }
     const objectUrl = URL.createObjectURL(selectedFile);
-    console.log("SelectedFile>>",selectedFile)
+    console.log("SelectedFile>>", selectedFile);
     setImage(objectUrl);
     imgToBase64(selectedFile);
     // free memory when ever this component is unmounted
@@ -42,7 +41,7 @@ export default function Image() {
 
   return (
     <>
-     <Helmet>
+      <Helmet>
         <title>{MainTitle} - Image</title>
       </Helmet>
       <Header />
@@ -60,8 +59,15 @@ export default function Image() {
             )}
             {selectedFile && (
               <>
-                <img className="rounded" src={image} alt="Uploaded" height={300}/>
-                <span className="hov-img-ic"><BiCamera className="display-3 cl-cam-primary" /></span>
+                <img
+                  className="rounded"
+                  src={image}
+                  alt="Uploaded"
+                  height={300}
+                />
+                <span className="hov-img-ic">
+                  <BiCamera className="display-3 cl-cam-primary" />
+                </span>
               </>
             )}
             <input
@@ -76,11 +82,10 @@ export default function Image() {
           <div className="my-4">
             <div className="d-flex mb-3">
               <button className="btn-cam-primary mx-3">Delete Image</button>
-              <Link to={`/result`} className="btn-cam-primary mx-3">Show Results</Link>
+              <Link to={`/result`} className="btn-cam-primary mx-3">
+                Show Results
+              </Link>
             </div>
-            {/* <div className="d-flex justify-content-center">
-              <button className="btn-cam-primary">Add to Public Gallery</button>
-            </div> */}
           </div>
         </div>
       </div>

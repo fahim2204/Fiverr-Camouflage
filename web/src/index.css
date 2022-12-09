@@ -107,6 +107,41 @@ a:hover {
 }
 
 
+/* Profile Image Update */
+.profile-img{
+    position: relative;
+}
+
+.profile-img .cam-icn {
+    position: absolute;
+    display: block;
+    z-index: 200;
+    bottom: 0;
+    left: calc(50% + 50px);
+    transform: translate(-50%, -50%);
+    transition: all 0.3s;
+}
+.profile-img .cam-icn:hover {
+    color: white !important;
+    cursor: pointer;
+    background-color: var(--cam-primary);
+    border-radius: 50%;
+    padding: 4px;
+    transition: all 0.3s;
+}
+
+.profile-img input {
+    display: none;
+}
+
+.img-cont:hover {
+    background-color: #36599e !important;
+    color: white !important;
+    transition: all 0.3s;
+}
+
+
+
 /* SideMenu CSS */
 
 #sidebar {

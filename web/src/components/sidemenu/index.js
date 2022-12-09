@@ -18,7 +18,7 @@ export default function SideMenu() {
     <>
       {localStorage.getItem("token") && (
         <>
-          <div id="sidebar" className={isSideOpen && "visible"}>
+          <div id="sidebar" className={isSideOpen ? "visible" : ""}>
             <div className="d-flex flex-column h-100">
               <div className="text-center display-3">
                 <FaUserCircle className="border rounded-circle" />

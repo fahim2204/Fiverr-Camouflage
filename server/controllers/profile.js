@@ -5,16 +5,52 @@ const { validationResult } = require("express-validator");
 // GET profile by Token
 exports.getProfile = async(req, res) => {
     const reqToken = req.headers.token;
-    console.log("Token>>", reqToken);
     await Profiles.findOne({ token: reqToken })
         .then((x) => {
-            console.log("Expiered>>", isTokenExpired(x.token));
             if (isTokenExpired(x.token)) {
                 res.status(401).send({
                     message: "Token is expired",
                 });
             } else {
                 res.status(200).send(x);
+            }
+        })
+        .catch((err) => {
+            res.status(404).send(err);
+        });
+};
+
+// UPDATE Profile
+exports.putProfile = async(req, res) => {
+    const reqToken = req.headers.token;
+    console.log("body>> ", req.body);
+    await Profiles.findOne({ token: reqToken })
+        .then((x) => {
+            if (isTokenExpired(x.token)) {
+                res.status(401).send({
+                    message: "Token is expired",
+                });
+            } else {
+                x.modifiedAt = new Date();
+                x.fullName = req.body.fullName;
+                x.email = req.body.email;
+                x.password = req.body.password;
+                x.occupation = req.body.occupation;
+                x.gender = req.body.gender;
+                x.country = req.body.country;
+                x.city = req.body.city;
+                x.profilePic = req.body.profilePic;
+                x.status = 1;
+                x.save().then(() => {
+                    res.status(200).send({
+                        message: "Profile Updated Successfully",
+                    });
+                }).catch(err => {
+                    res.status(500).send({
+                        message: "Server Error",
+                        error: err,
+                    })
+                });
             }
         })
         .catch((err) => {

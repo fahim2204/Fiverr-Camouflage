@@ -15,6 +15,7 @@ module.exports = mongoose.model(
         token: String,
         status: Number,
         joinedAt: { type: Date, default: Date.now },
+        modifiedAt: { type: Date, default: Date.now },
         lastLogin: { type: Date, default: Date.now },
     })
 );
