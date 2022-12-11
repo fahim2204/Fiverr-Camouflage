@@ -14,7 +14,7 @@ export default function Header() {
       <SideMenu />
       <nav className="navbar navbar-expand-md mt-2 mb-4 p-0">
         <NavLink className="navbar-brand text-white p-0" to={`/`}>
-          <img src={Images.Logo} alt="logo" height={55} />
+          <img src={Images.Logo} alt="logo" height={70} />
         </NavLink>
         <button
           className="navbar-toggler"

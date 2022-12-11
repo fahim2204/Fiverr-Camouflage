@@ -9,8 +9,8 @@ var corsOrigin = {
     origin: ["http://localhost:3000", "https://pass.fahimfaisal.net"],
 };
 app.use(cors(corsOrigin));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }));
 app.listen(port, () =>
     console.log(`Server Started :: http://localhost:${port}`)
 );
@@ -24,7 +24,9 @@ mongoose.connect(
 // Requiring all Routers
 const profileRouter = require("./routes/profile");
 const rootRouter = require("./routes/root");
+const galleryRouter = require("./routes/gallery");
 
 app.use("/", rootRouter)
 app.use("/profile", profileRouter)
+app.use("/gallery", galleryRouter)
 app.use((req, res) => { res.status(404).send("Not Found: No such route"); });

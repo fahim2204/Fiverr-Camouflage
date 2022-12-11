@@ -20,7 +20,11 @@ a:hover {
 }
 
 .slider-g1 {
-    position: relative;
+    /* position: relative;
+     */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .swiper-slide {
@@ -33,16 +37,11 @@ a:hover {
 }
 
 .slider-g1 .slider-title {
-    position: absolute;
-    bottom: 0px;
-    z-index: 1;
-    left: 50%;
-    transform: translateX(-50%);
     color: #ffffff;
     background-color: rgba(var(--cam-primary-cd), 0.6);
-    padding: 0px 12px;
-    border-radius: 6px 6px 0 0;
-    font-size: calc(0.8rem + 1vw);
+    padding: 0px 15px;
+    border-radius: 0 0 6px 6px;
+    font-size: calc(0.6rem + 1vw);
     user-select: none;
 }
 
@@ -108,7 +107,7 @@ a:hover {
 
 
 /* Profile Image Update */
-.profile-img{
+.profile-img {
     position: relative;
 }
 
@@ -121,6 +120,7 @@ a:hover {
     transform: translate(-50%, -50%);
     transition: all 0.3s;
 }
+
 .profile-img .cam-icn:hover {
     color: white !important;
     cursor: pointer;
@@ -232,17 +232,34 @@ a:hover {
 }
 
 .op-emo:hover {
-    color: var(--cam-primary-light2);
     cursor: pointer;
     transition: 0.3s;
 }
 
-#opinion-1:checked~.emo-1,
-#opinion-2:checked~.emo-2,
-#opinion-3:checked~.emo-3,
-#opinion-4:checked~.emo-4,
-#opinion-5:checked~.emo-5 {
+#opinion-1~.emo-1:hover,
+#opinion-1:checked~.emo-1 {
     color: var(--cam-primary);
+
+}
+
+#opinion-2~.emo-2:hover,
+#opinion-2:checked~.emo-2 {
+    color: orange;
+}
+
+#opinion-3~.emo-3:hover,
+#opinion-3:checked~.emo-3 {
+    color: yellow;
+}
+
+#opinion-4~.emo-4:hover,
+#opinion-4:checked~.emo-4 {
+    color: greenyellow;
+}
+
+#opinion-5~.emo-5:hover,
+#opinion-5:checked~.emo-5 {
+    color: green;
 }
 
 
@@ -282,8 +299,11 @@ a:hover {
 #navbarSupportedContent .navbar-nav .show>.nav-link,
 #navbarSupportedContent .navbar-nav .nav-link.active {
     /* color: var(--cam-primary); */
-    padding: 4px;
+    /* padding: 4px;
     border-bottom: 3px solid var(--cam-primary);
+    transition: 0.3s ease-in-out; */
+    color: white !important;
+    background-color: var(--cam-primary);
     transition: 0.3s ease-in-out;
 }
 

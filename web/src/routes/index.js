@@ -3,12 +3,16 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Swiper, SwiperSlide } from "swiper/react";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { BallTriangle } from "react-loader-spinner";
 import { Pagination, Autoplay, EffectFade, Lazy } from "swiper";
 
 // Import CSS
 // Import JS
 
 // Import Components
+import { apiUrl, notify } from "../utils/config";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import { MainTitle } from "../utils/variables";
@@ -16,32 +20,21 @@ import { BiCamera } from "react-icons/bi";
 import { Images } from "../utils/images";
 
 export default function Index() {
-  const [selectedFile, setSelectedFile] = useState("");
-  const imageInputRef = useRef(null);
-  const [imgBase64, setImgBase64] = useState("");
-  const [image, setImage] = useState("");
-
-  const imgToBase64 = (image) => {
-    let base64String = "";
-    var reader = new FileReader();
-    reader.onload = function () {
-      base64String = reader.result;
-      setImgBase64(base64String);
-    };
-    reader.readAsDataURL(image);
-  };
+  const [homeImage, setHomeImage] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (!selectedFile) {
-      setImage(undefined);
-      return;
-    }
-    const objectUrl = URL.createObjectURL(selectedFile);
-    setImage(objectUrl);
-    imgToBase64(selectedFile);
-    // free memory when ever this component is unmounted
-    return () => URL.revokeObjectURL(objectUrl);
-  }, [selectedFile]);
+    axios
+      .get(`${apiUrl}/gallery`)
+      .then((x) => {
+        setIsLoading(false);
+        setHomeImage(x.data);
+      })
+      .catch(() => {
+        setIsLoading(true);
+        notify("Can't Fetch Images!!");
+      });
+  }, []);
 
   return (
     <>
@@ -49,129 +42,70 @@ export default function Index() {
         <title>{MainTitle} - Home</title>
       </Helmet>
       <Header />
-      <div className="row g-2 g-lg-4">
-        <div className="col-12 col-md-6 mb-3 mb-md-0 slider-g1">
-          <Swiper
-            slidesPerView={1}
-            autoHeight={true}
-            loop={true}
-            lazy={true}
-            effect={"fade"}
-            autoplay={{
-              delay: 2000,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: false,
-            }}
-            modules={[EffectFade, Autoplay, Lazy]}
-            className="mySwiper"
-          >
-            <SwiperSlide>
-              <img className="img-fluid" src="/img/am-up-1.png" alt="gallery" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img className="img-fluid" src="/img/am-rs-1.png" alt="gallery" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img className="img-fluid" src="/img/am-up-2.png" alt="gallery" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img className="img-fluid" src="/img/am-rs-2.png" alt="gallery" />
-            </SwiperSlide>
-          </Swiper>
-          <span className="slider-title">Amphiabians</span>
-        </div>
-        <div className="col-12 col-md-6 mb-3 mb-md-0 slider-g1">
-          <Swiper
-            slidesPerView={1}
-            autoHeight={true}
-            loop={true}
-            lazy={true}
-            effect={"fade"}
-            autoplay={{
-              delay: 2000,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: false,
-            }}
-            modules={[EffectFade, Autoplay, Lazy]}
-            className="mySwiper"
-          >
-            <SwiperSlide>
-              <img className="img-fluid" src="/img/aq-up-1.png" alt="gallery" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img className="img-fluid" src="/img/aq-rs-1.png" alt="gallery" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img className="img-fluid" src="/img/aq-up-2.png" alt="gallery" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img className="img-fluid" src="/img/aq-rs-2.png" alt="gallery" />
-            </SwiperSlide>
-          </Swiper>
-          <span className="slider-title">Aquatic</span>
-        </div>
-
-        <div className="col-12 col-md-6 mb-3 mb-md-0 slider-g1">
-          <Swiper
-            slidesPerView={1}
-            autoHeight={true}
-            loop={true}
-            lazy={true}
-            effect={"fade"}
-            autoplay={{
-              delay: 2000,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: false,
-            }}
-            modules={[EffectFade, Autoplay, Lazy]}
-            className="mySwiper"
-          >
-            <SwiperSlide>
-              <img className="img-fluid" src="/img/fly-up-1.png" alt="gallery" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img className="img-fluid" src="/img/fly-rs-1.png" alt="gallery" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img className="img-fluid" src="/img/fly-up-2.png" alt="gallery" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img className="img-fluid" src="/img/fly-rs-2.png" alt="gallery" />
-            </SwiperSlide>
-          </Swiper>
-          <span className="slider-title">Flying</span>
-        </div>
-        <div className="col-12 col-md-6 mb-3 mb-md-0 slider-g1">
-          <Swiper
-            slidesPerView={1}
-            autoHeight={true}
-            loop={true}
-            lazy={true}
-            effect={"fade"}
-            autoplay={{
-              delay: 2000,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: false,
-            }}
-            modules={[EffectFade, Autoplay, Lazy]}
-            className="mySwiper"
-          >
-            <SwiperSlide>
-              <img className="img-fluid" src="/img/ter-up-1.png" alt="gallery" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img className="img-fluid" src="/img/ter-rs-1.png" alt="gallery" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img className="img-fluid" src="/img/ter-up-2.png" alt="gallery" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img className="img-fluid" src="/img/ter-rs-2.png" alt="gallery" />
-            </SwiperSlide>
-          </Swiper>
-          <span className="slider-title">Terrestrial</span>
-        </div>
-      </div>
+     {isLoading ? <div className="d-flex justify-content-center mt-5">
+          <BallTriangle
+            height={100}
+            width={100}
+            radius={5}
+            color="#4fa94d"
+            ariaLabel="ball-triangle-loading"
+            wrapperClass={{}}
+            wrapperStyle=""
+            visible={true}
+          />
+        </div> :<div className="row g-2 g-lg-4">
+        {[...new Set(homeImage.map((x) => x.categoryName))].map(
+          (cat, catindex) => {
+            return (
+              <>
+                <div
+                  key={catindex}
+                  className="col-12 col-md-6 mb-3 mb-md-0 slider-g1"
+                >
+                  <Swiper
+                    slidesPerView={1}
+                    autoHeight={true}
+                    loop={true}
+                    lazy={true}
+                    effect={"fade"}
+                    autoplay={{
+                      delay: 2000,
+                      disableOnInteraction: false,
+                      pauseOnMouseEnter: false,
+                    }}
+                    modules={[EffectFade, Autoplay, Lazy]}
+                    className="mySwiper"
+                  >
+                    {homeImage
+                      .filter((item) => item.categoryName === cat)
+                      .map((item) => {
+                        return (
+                          <>
+                            <SwiperSlide>
+                              <img
+                                className="img-fluid"
+                                src={item.uploadedImage}
+                                alt="gallery"
+                              />
+                            </SwiperSlide>
+                            <SwiperSlide>
+                              <img
+                                className="img-fluid"
+                                src={item.resultantImage}
+                                alt="gallery"
+                              />
+                            </SwiperSlide>
+                          </>
+                        );
+                      })}
+                  </Swiper>
+                  <span className="slider-title">{cat}</span>
+                </div>
+              </>
+            );
+          }
+        )}
+      </div>}
       <div className="my-5">
         <div className="text-center">
           <Link to={`/image`} className="btn-cam-primary">

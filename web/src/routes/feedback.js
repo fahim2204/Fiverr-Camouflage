@@ -31,7 +31,7 @@ export default function Feedback() {
           <label htmlFor="opinion-5" className="op-emo emo-5" title="Excellent"><TbMoodCrazyHappy/></label>
         </div>
         <hr />
-        <p className="fs-6 mb-2">Please select your feedback category below:</p>
+        <p className="fs-6 mb-2 text-center">Please select your feedback category below:</p>
         <div className="d-flex justify-content-center align-items-center">
           <input type="radio" name="feed-cat" id="feed-cat-1" value="cry" class="cat-radio" />
           <label htmlFor="feed-cat-1" className="feed-emo feed-emo-1" title="Very Bad">Suggestion</label>
@@ -41,19 +41,21 @@ export default function Feedback() {
           <label htmlFor="feed-cat-3" className="feed-emo feed-emo-3" title="Neutral">Complement</label>
         </div>
         <hr />
-        <div class="mb-3 w-75">
-          <label for="feedtext" class="form-label">
-            Please leave your feedback below:
-          </label>
-          <textarea
-            class="form-control"
-            id="feedtext"
-            rows="3"
-            placeholder="Leave your feedback here..."
-          ></textarea>
-        </div>
+     <div className="d-flex justify-content-center">
+          <div class="mb-3 w-75">
+            <label for="feedtext" class="form-label">
+              Please leave your feedback below:
+            </label>
+            <textarea
+              class="form-control"
+              id="feedtext"
+              rows="3"
+              placeholder="Leave your feedback here..."
+            ></textarea>
+          </div>
+     </div >
         <div className="text-center pt-3">
-          <button className="btn-cam-primary mb-5 px-5">Send</button>
+          <button className="btn-cam-primary mb-5 px-5">Submit</button>
         </div>
       </div>
       <Footer />

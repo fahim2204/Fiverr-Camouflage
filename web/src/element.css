@@ -65,14 +65,14 @@
     border: 0.1rem solid var(--cam-primary);
     border-radius: 0.375rem;
     background-color: var(--cam-primary);
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .btn-cam-primary:hover {
-    color: white;
+    color: red;
     /* border: 0.1rem solid var(--cam-primary-light); */
     border-radius: 0.375rem;
-    /* background-color: var(--cam-primary-light); */
+    background-color: white;
     box-shadow: 0.02rem 0.02rem 0.3rem 0.10rem var(--cam-primary) !important;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
