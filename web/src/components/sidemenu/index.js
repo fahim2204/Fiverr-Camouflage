@@ -6,7 +6,7 @@ import { useState } from "react";
 // Import JS
 
 // Import Components
-import { FaAngleRight, FaAngleLeft, FaUserCircle } from "react-icons/fa";
+import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
 
 export default function SideMenu() {
   const navigate = useNavigate();
@@ -20,9 +20,10 @@ export default function SideMenu() {
         <>
           <div id="sidebar" className={isSideOpen ? "visible" : ""}>
             <div className="d-flex flex-column h-100">
-              <div className="text-center display-3">
-                <FaUserCircle className="border rounded-circle" />
+              <div className="text-center">
+                <img className="mt-4 rounded-circle" src={localStorage.getItem("profilePic")} height={70} alt="Profile" />
               </div>
+              <div className="text-center mt-2 fw-bold user-select-none">{localStorage.getItem("fullName")}</div>
               <ul className="mt-4">
                 <li>
                   <Link to={`/profile`}>

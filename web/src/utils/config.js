@@ -1,5 +1,6 @@
 import axios from "axios"
 import { toast } from "react-toastify";
+import jwtDecode from 'jwt-decode'; 
 
 
 export const apiUrl = "http://localhost:8080"
@@ -24,3 +25,13 @@ export const axiosAuth = axios.create({
         token:savedToken,
     }
 })
+
+export const isTokenValid = () =>{
+  const token = localStorage.getItem("token");
+    if(jwtDecode(token).exp < Date.now() / 1000){
+        return false;
+    }else{
+        return true;
+    }
+
+}

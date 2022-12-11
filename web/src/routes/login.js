@@ -11,41 +11,41 @@ import { useEffect, useState } from "react";
 // Import Components
 import { MainTitle } from "../utils/variables";
 import { Images } from "../utils/images";
-import { apiUrl } from "../utils/config";
+import { apiUrl,notify } from "../utils/config";
 
 export default function Login() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [loginData, setLoginData] = useState({});
+  const [isError, setIsError] = useState(null);
 
-  const notify = (msg) =>
-  toast(msg, {
-    position: "bottom-right",
-    autoClose: 1000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: false,
-    draggable: false,
-    progress: undefined,
-    theme: "light",
-  });
+  useEffect(() => {
+    console.log("isError", isError);
+  }, [isError]);
 
   const handleLoginData = (e) => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };
 
   const doLoginRequest = () => {
-    if(!loginData["username"] || !loginData["password"]){
-      notify("Fill Username & Password")
-    }else{
+    if (!loginData["username"] || !loginData["password"]) {
+      setIsError(["Please Fill Username & Password"]);
+      // notify("Fill Username & Password");
+    } else {
+      setIsError(null);
       axios
         .post(`${apiUrl}/login`, loginData)
         .then((x) => {
-          localStorage.setItem("token",x.data);
+          localStorage.setItem("token", x.data.token);
+          localStorage.setItem("profilePic", x.data.profilePic);
+          localStorage.setItem("username", x.data.username);
+          localStorage.setItem("fullName", x.data.fullName);
           notify("login Succesfull!!");
-          navigate("/")
+          navigate("/");
         })
         .catch((e) => {
-          e.response.data.message ? notify(e.response.data.message) : console.log("Error>> ", e);
+          e.response.data.message
+            ? setIsError([e.response.data.message])
+            : console.log("Error>> ", e);
         });
     }
   };
@@ -89,6 +89,13 @@ export default function Login() {
               }}
             />
           </div>
+          {isError && (
+            <div className="alert alert-danger py-0 mb-0" role="alert">
+              {isError.map((item) => {
+                return <small>{item}</small>;
+              })}
+            </div>
+          )}
           <div className="text-center">
             <button className="btn-cam-primary mt-3" onClick={doLoginRequest}>
               Login

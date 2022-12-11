@@ -42,7 +42,8 @@ export default function Index() {
         <title>{MainTitle} - Home</title>
       </Helmet>
       <Header />
-     {isLoading ? <div className="d-flex justify-content-center mt-5">
+      {isLoading ? (
+        <div className="d-flex justify-content-center mt-5">
           <BallTriangle
             height={100}
             width={100}
@@ -53,59 +54,62 @@ export default function Index() {
             wrapperStyle=""
             visible={true}
           />
-        </div> :<div className="row g-2 g-lg-4">
-        {[...new Set(homeImage.map((x) => x.categoryName))].map(
-          (cat, catindex) => {
-            return (
-              <>
-                <div
-                  key={catindex}
-                  className="col-12 col-md-6 mb-3 mb-md-0 slider-g1"
-                >
-                  <Swiper
-                    slidesPerView={1}
-                    autoHeight={true}
-                    loop={true}
-                    lazy={true}
-                    effect={"fade"}
-                    autoplay={{
-                      delay: 2000,
-                      disableOnInteraction: false,
-                      pauseOnMouseEnter: false,
-                    }}
-                    modules={[EffectFade, Autoplay, Lazy]}
-                    className="mySwiper"
+        </div>
+      ) : (
+        <div className="row g-2 g-lg-4">
+          {[...new Set(homeImage.map((x) => x.categoryName))].map(
+            (cat, catindex) => {
+              return (
+                <>
+                  <div
+                    key={catindex + 500}
+                    className="col-12 col-md-6 mb-3 mb-md-0 slider-g1"
                   >
-                    {homeImage
-                      .filter((item) => item.categoryName === cat)
-                      .map((item) => {
-                        return (
-                          <>
-                            <SwiperSlide>
-                              <img
-                                className="img-fluid"
-                                src={item.uploadedImage}
-                                alt="gallery"
-                              />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                              <img
-                                className="img-fluid"
-                                src={item.resultantImage}
-                                alt="gallery"
-                              />
-                            </SwiperSlide>
-                          </>
-                        );
-                      })}
-                  </Swiper>
-                  <span className="slider-title">{cat}</span>
-                </div>
-              </>
-            );
-          }
-        )}
-      </div>}
+                    <Swiper
+                      slidesPerView={1}
+                      autoHeight={true}
+                      loop={true}
+                      lazy={true}
+                      effect={"fade"}
+                      autoplay={{
+                        delay: 2000,
+                        disableOnInteraction: false,
+                        pauseOnMouseEnter: false,
+                      }}
+                      modules={[EffectFade, Autoplay, Lazy]}
+                      className="mySwiper"
+                    >
+                      {homeImage
+                        .filter((item) => item.categoryName === cat)
+                        .map((item, index) => {
+                          return (
+                            <>
+                              <SwiperSlide>
+                                <img
+                                  className="img-fluid"
+                                  src={item.uploadedImage}
+                                  alt="gallery"
+                                />
+                              </SwiperSlide>
+                              <SwiperSlide>
+                                <img
+                                  className="img-fluid"
+                                  src={item.resultantImage}
+                                  alt="gallery"
+                                />
+                              </SwiperSlide>
+                            </>
+                          );
+                        })}
+                    </Swiper>
+                    <span className="slider-title">{cat}</span>
+                  </div>
+                </>
+              );
+            }
+          )}
+        </div>
+      )}
       <div className="my-5">
         <div className="text-center">
           <Link to={`/image`} className="btn-cam-primary">

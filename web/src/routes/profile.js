@@ -142,15 +142,15 @@ export default function Profile() {
         <div className="col-12 col-sm-9">
           <div className="col-12 col-md-10 col-lg-8 col-xl-7 mt-0 mt-sm-4 pt-4">
             <div className="mb-4 row">
-              <label className="col-sm-3 col-form-label" htmlFor="fullname">
+              <label className="col-sm-3 col-form-label" htmlFor="fullName">
                 Full Name:
               </label>
               <div className="col-sm-9">
                 <input
                   className="form-control py-2"
                   type="text"
-                  name="fullname"
-                  id="fullname"
+                  name="fullName"
+                  id="fullName"
                   value={profileData?.fullName || ""}
                   onChange={(e) => {
                     handleProfileData(e);

@@ -1,12 +1,10 @@
 const mongoose = require("mongoose");
 
 module.exports = mongoose.model(
-  "Feedbacks",
+  "Faq",
   new mongoose.Schema({
-    opinion: Number,
-    category: Number,
-    feedText: String,
+    question: String,
+    answer: String,
     createdAt: { type: Date, default: Date.now },
-    user: mongoose.SchemaTypes.ObjectId
   })
 );

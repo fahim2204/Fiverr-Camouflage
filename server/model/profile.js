@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 module.exports = mongoose.model(
-    "Profiles",
+    "Profile",
     new mongoose.Schema({
         fullName: String,
         username: { type: String, required: true, unique: true },

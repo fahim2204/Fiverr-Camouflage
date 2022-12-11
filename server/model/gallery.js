@@ -10,6 +10,6 @@ module.exports = mongoose.model(
         status: { type: Number, default: 1 },
         isArchived: { type: Number, default: 0 },
         isPublic: { type: Boolean, default: 0 },
-        user: { type: mongoose.SchemaTypes.ObjectId, ref: "Profiles" }
+        user: { type: mongoose.SchemaTypes.ObjectId, ref: "Profile" }
     })
 );
