@@ -9,7 +9,7 @@ import { BallTriangle } from "react-loader-spinner";
 // Import JS
 
 // Import Components
-import { apiUrl, notify,isTokenValid } from "../utils/config";
+import { apiUrl, notify, isTokenValid } from "../utils/config";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import {
@@ -25,50 +25,57 @@ export default function Feedback() {
   const [allFeedback, setAllFeedback] = useState([]);
   const [feedbackData, setFeedbackData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(null);
 
   useEffect(() => {
     setLocalToken(localStorage.getItem("token"));
     // isTokenValid()?notify("Valid"):notify("Not")
   }, []);
 
-  const getAllFeedback = ()=>{
+  const getAllFeedback = () => {
     axios
-    .get(`${apiUrl}/feedback`)
-    .then((x) => {
-      setIsLoading(false);
-      setAllFeedback(x.data);
-    })
-    .catch(() => {
-      setIsLoading(true);
-      notify("Can't Fetch Feedbacks!!");
-    });
-  }
+      .get(`${apiUrl}/feedback`)
+      .then((x) => {
+        setIsLoading(false);
+        setAllFeedback(x.data);
+      })
+      .catch(() => {
+        setIsLoading(true);
+        notify("Can't Fetch Feedbacks!!");
+      });
+  };
   useEffect(() => {
     getAllFeedback();
   }, []);
 
- 
   const handleFeedChange = (e) => {
     setFeedbackData({ ...feedbackData, [e.target.name]: e.target.value });
   };
   const handleFeedbackSubmit = () => {
-    axios
-    .post(`${apiUrl}/feedback`, feedbackData ,{
-      headers: {
-        token: localToken,
-      },
-    })
-    .then((x) => {
-      notify(x.data.message);
-    })
-    .catch((err) => {
-      console.log("ERR>>",err);
-    });
-  }
-  useEffect(() => {
-    // Log the feedbackData state when it changes
-    console.log("feedbackData>> ", feedbackData);
-  }, [feedbackData]);
+    if (
+      !feedbackData["opinion"] ||
+      !feedbackData["category"] ||
+      !feedbackData["feedText"]
+    ) {
+      setIsError(["Please Fill All the Fields"]);
+    } else {
+      setIsError(null);
+      axios
+        .post(`${apiUrl}/feedback`, feedbackData, {
+          headers: {
+            token: localToken,
+          },
+        })
+        .then((x) => {
+          notify(x.data.message);
+          setFeedbackData({feedText:"",opinion:"",category:""});
+          getAllFeedback();
+        })
+        .catch((err) => {
+          console.log("ERR>>", err);
+        });
+    }
+  };
 
   return (
     <>
@@ -90,6 +97,7 @@ export default function Feedback() {
             name="opinion"
             id="opinion-1"
             value="1"
+            {...feedbackData.opinion===1 && `checked`}
             className="op-radio"
             onChange={(e) => handleFeedChange(e)}
           />
@@ -202,13 +210,28 @@ export default function Feedback() {
               className="form-control"
               name="feedText"
               rows="3"
+              value={feedbackData["feedText"]}
               placeholder="Leave your feedback here..."
               onChange={(e) => handleFeedChange(e)}
             ></textarea>
           </div>
         </div>
+        {isError && (
+          <div className="d-flex justify-content-center">
+            <div className="col-12 col-md-8 alert alert-danger py-0 mb-0" role="alert">
+              {isError.map((item) => {
+                return <small>{item}</small>;
+              })}
+            </div>
+          </div>
+        )}
         <div className="text-center pt-3">
-          <button className="btn-cam-primary mb-5 px-5" onClick={handleFeedbackSubmit}>Submit</button>
+          <button
+            className="btn-cam-primary mb-5 px-5"
+            onClick={handleFeedbackSubmit}
+          >
+            Submit
+          </button>
         </div>
         <div className="fs-4">User's Feedback</div>
         <hr />
@@ -220,7 +243,9 @@ export default function Feedback() {
             >
               <div className="d-flex align-items-center justify-content-between">
                 <div className="d-flex align-items-center">
-                  <div className="fs-5 me-2">{item.user?.fullName?item.user?.fullName:"Unknown"}</div>
+                  <div className="fs-5 me-2">
+                    {item.user?.fullName ? item.user?.fullName : "Unknown"}
+                  </div>
                   <div className="fs-6">
                     <small>{moment(item.createdAt).format("DD-MM-YYYY")}</small>
                   </div>

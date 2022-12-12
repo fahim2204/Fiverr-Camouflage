@@ -18,10 +18,6 @@ export default function Login() {
   const [loginData, setLoginData] = useState({});
   const [isError, setIsError] = useState(null);
 
-  useEffect(() => {
-    console.log("isError", isError);
-  }, [isError]);
-
   const handleLoginData = (e) => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };

@@ -31,7 +31,7 @@ export default function SideMenu() {
                   </Link>
                 </li>
                 <li>
-                  <Link to={`/gallery`}>
+                  <Link to={`/mygallery`}>
                     <div>My Gallery</div>
                   </Link>
                 </li>

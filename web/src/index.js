@@ -31,6 +31,8 @@ import Image from "./routes/image";
 import Result from "./routes/result";
 import Profile from "./routes/profile";
 import Feedback from "./routes/feedback";
+import OwnGallery from "./routes/owngallery";
+import ArchiveGallery from "./routes/archivegallery";
 
 // All Routes
 const router = createBrowserRouter([
@@ -65,6 +67,14 @@ const router = createBrowserRouter([
   {
     path: "/gallery",
     element: <Gallery />,
+  },
+  {
+    path: "/mygallery",
+    element: <OwnGallery />,
+  },
+  {
+    path: "/archive",
+    element: <ArchiveGallery />,
   },
   {
     path: "/feedback",

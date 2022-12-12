@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import { ReactCompareSlider, ReactCompareSliderImage } from "react-compare-slider";
 import { Helmet } from "react-helmet-async";
+import { saveAs } from 'file-saver'
 
 // Import CSS
 // Import JS
@@ -15,6 +16,9 @@ import { MainTitle } from "../utils/variables";
 export default function Image() {
   const [selectedFile, setSelectedFile] = useState("");
   const imageInputRef = useRef(null);
+  const downloadImg = ()=>{
+    saveAs('/img/fly-res-2.png', `image.jpg`)
+  }
 
   return (
     <>
@@ -32,7 +36,7 @@ export default function Image() {
           </div>
           <div className="my-4">
             <div className="d-flex justify-content-center mb-3">
-              <button className="btn-cam-primary">Download Image</button>
+              <button className="btn-cam-primary" onClick={downloadImg}>Download Image</button>
             </div>
             <div className="d-flex justify-content-center">
               <button className="btn-cam-primary mx-3">Save to My Gallery</button>
