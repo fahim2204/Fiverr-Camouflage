@@ -1,6 +1,6 @@
 //Import React Library
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
@@ -14,6 +14,7 @@ import { Images } from "../utils/images";
 import { apiUrl } from "../utils/config";
 
 export default function Register() {
+  const navigate = useNavigate();
   const [registerData, setRegisterData] = useState({});
   const [registerError, setRegisterError] = useState([]);
 
@@ -49,6 +50,7 @@ export default function Register() {
           confirmPassword: "",
         });
         notify();
+        navigate("/login");
       })
       .catch((e) => {
         e.response.data

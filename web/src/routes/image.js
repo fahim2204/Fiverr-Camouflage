@@ -79,9 +79,24 @@ export default function Image() {
               onChange={(e) => setSelectedFile(e.target.files[0])}
             />
           </div>
-          <div className="my-4">
+          <div className="my-2">
+            <select
+              className="form-select"
+              name="categoryName"
+              // value={galleryData?.categoryName || ""}
+              onChange={(e) => {
+                // handleProfileData(e);
+              }}
+            >
+              <option value="">Select a category</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div className="my-3">
             <div className="d-flex mb-3">
-              <button className="btn-cam-primary mx-3">Delete Image</button>
+              {/* <button className="btn-cam-primary mx-3">Delete Image</button> */}
               <Link to={`/result`} className="btn-cam-primary mx-3">
                 Show Results
               </Link>

@@ -18,6 +18,7 @@ import Footer from "../components/footer";
 export default function Profile() {
   const navigate = useNavigate();
   const [profileData, setProfileData] = useState({});
+  const [profileUpdateError, setProfileUpdateError] = useState(null);
   const [token, setToken] = useState();
   const [selectedFile, setSelectedFile] = useState("");
   const imageInputRef = useRef(null);
@@ -30,7 +31,7 @@ export default function Profile() {
     reader.onload = function () {
       base64String = reader.result;
       setImgBase64(base64String);
-      setProfileData({...profileData,profilePic:base64String})
+      setProfileData({ ...profileData, profilePic: base64String });
     };
     reader.readAsDataURL(image);
   };
@@ -65,21 +66,23 @@ export default function Profile() {
       theme: "light",
     });
 
-    const doUpdateProfileRequest = ()=>{
-      axios
-      .put(`${apiUrl}/profile`, profileData ,{
+  const doUpdateProfileRequest = () => {
+    axios
+      .put(`${apiUrl}/profile`, profileData, {
         headers: {
           token: token,
         },
       })
       .then((x) => {
         notify(x.data.message);
+        setProfileUpdateError(null)
       })
       .catch((err) => {
-        console.log("ERR>>",err);
+        console.log("ERR>>", err);
+        if (err.response.data) setProfileUpdateError(err.response.data);
+        else notify("Something wrong!!!");
       });
-    }
-  
+  };
 
   useEffect(() => {
     if (token) {
@@ -93,6 +96,7 @@ export default function Profile() {
           setProfileData(x.data);
         })
         .catch(() => {
+          localStorage.clear();
           setTimeout(() => {
             navigate("/login");
           }, 200);
@@ -140,6 +144,13 @@ export default function Profile() {
           </div>
         </div>
         <div className="col-12 col-sm-9">
+          {profileData.status === 0 && (
+            <div className="d-flex justify-content-start">
+              <div className="alert alert-warning py-1 mb-0" role="alert">
+                Please update your full profile to access all the features!!!
+              </div>
+            </div>
+          )}
           <div className="col-12 col-md-10 col-lg-8 col-xl-7 mt-0 mt-sm-4 pt-4">
             <div className="mb-4 row">
               <label className="col-sm-3 col-form-label" htmlFor="fullName">
@@ -267,8 +278,20 @@ export default function Profile() {
             <div className="row">
               <div className="col-sm-3"></div>
               <div className="col-sm-9">
+                {profileUpdateError && (
+                  <div className="alert alert-danger mb-0 p-1" role="alert">
+                    <ul className="mb-0">
+                      {profileUpdateError.map((item, index) => {
+                        return <li key={index}>{item.msg}</li>;
+                      })}
+                    </ul>
+                  </div>
+                )}
                 <div className="text-center mb-3">
-                  <button className="btn-cam-primary my-4" onClick={doUpdateProfileRequest}>
+                  <button
+                    className="btn-cam-primary my-4"
+                    onClick={doUpdateProfileRequest}
+                  >
                     Save Changes
                   </button>
                 </div>
