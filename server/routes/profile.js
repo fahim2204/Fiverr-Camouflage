@@ -5,6 +5,7 @@ const { check } = require("express-validator");
 const profileController = require("../controllers/profile");
 
 router.get("/", Auth.authenticateJWT, profileController.getProfile);
+router.get("/status", Auth.authenticateJWT, profileController.getStatus);
 router.put("/", Auth.authenticateJWT, [
     check("fullName")
     .trim()

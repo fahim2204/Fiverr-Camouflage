@@ -28,7 +28,6 @@ import Gallery from "./routes/gallery";
 import Helpline from "./routes/helpline";
 import Contact from "./routes/contact";
 import Image from "./routes/image";
-import Result from "./routes/result";
 import Profile from "./routes/profile";
 import Feedback from "./routes/feedback";
 import OwnGallery from "./routes/owngallery";
@@ -43,10 +42,6 @@ const router = createBrowserRouter([
   {
     path: "/image",
     element: <Image />,
-  },
-  {
-    path: "/result",
-    element: <Result />,
   },
   {
     path: "/login",

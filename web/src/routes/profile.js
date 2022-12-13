@@ -144,7 +144,7 @@ export default function Profile() {
           </div>
         </div>
         <div className="col-12 col-sm-9">
-          {profileData.status === 0 && (
+          {(!profileData.status || profileData.status === 0) && (
             <div className="d-flex justify-content-start">
               <div className="alert alert-warning py-1 mb-0" role="alert">
                 Please update your full profile to access all the features!!!

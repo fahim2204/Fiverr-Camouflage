@@ -73,6 +73,8 @@ export default function Feedback() {
         })
         .catch((err) => {
           console.log("ERR>>", err);
+          if(err.response.status===401)
+          notify("Please Login First!!")
         });
     }
   };

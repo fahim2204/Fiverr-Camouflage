@@ -6,6 +6,10 @@ const { validationResult } = require("express-validator");
 exports.getProfile = async(req, res) => {
     res.status(200).send(req.authUser);
 };
+// GET profile by Token
+exports.getStatus = async(req, res) => {
+    req.authUser.status ? res.sendStatus(200) : res.sendStatus(404);
+};
 
 // UPDATE Profile
 exports.putProfile = async(req, res) => {

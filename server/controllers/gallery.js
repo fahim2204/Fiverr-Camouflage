@@ -4,7 +4,7 @@ const { validationResult } = require("express-validator");
 
 // GET All Gallery
 exports.getGallery = async(req, res) => {
-    await Gallery.find({ isPublic: 1})
+    await Gallery.find({ isPublic: 1 })
         .then((x) => {
             res.status(200).send(x);
         })
@@ -15,7 +15,7 @@ exports.getGallery = async(req, res) => {
 
 // GET ALL Private gallery by Token
 exports.getPrivateGallery = async(req, res) => {
-    await Gallery.find({ user: req.authUser.id , isArchived:0  })
+    await Gallery.find({ user: req.authUser.id, isArchived: 0 })
         .then((x) => {
             res.status(200).send(x);
         })
@@ -27,7 +27,7 @@ exports.getPrivateGallery = async(req, res) => {
 
 // GET ALL Private gallery by Token
 exports.getPrivateArchivedGallery = async(req, res) => {
-    await Gallery.find({ user: req.authUser.id , isArchived:1  })
+    await Gallery.find({ user: req.authUser.id, isArchived: 1 })
         .then((x) => {
             res.status(200).send(x);
         })
@@ -42,6 +42,7 @@ exports.postGallery = async(req, res) => {
     if (!errors.isEmpty()) {
         return res.status(422).send(errors.errors);
     } else {
+        req.body.user = req.authUser.id;
         await Gallery.create(req.body)
             .then((x) => {
                 res.status(201).send(x);
