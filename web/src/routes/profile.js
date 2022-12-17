@@ -174,16 +174,21 @@ export default function Profile() {
                 Occupation:
               </label>
               <div className="col-sm-9">
-                <input
-                  className="form-control py-2"
-                  type="text"
+              <select
+                  className="form-select"
                   name="occupation"
                   id="occupation"
                   value={profileData?.occupation || ""}
                   onChange={(e) => {
                     handleProfileData(e);
                   }}
-                />
+                >
+                  <option value="">Select Occupation</option>
+                  <option value="Farmers">Farmers</option>
+                  <option value="Wildlife Experts">Wildlife Experts</option>
+                  <option value="Students">Students</option>
+                  <option value="Others">Others</option>
+                </select>
               </div>
             </div>
             <div className="mb-4 row">

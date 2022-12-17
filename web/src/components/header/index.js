@@ -78,7 +78,7 @@ export default function Header() {
             </li>
             {!localStorage.getItem("token") && (
               <>
-                <li className="nav-item">
+                <li className="nav-item d-flex align-items-center">
                   <NavLink
                     className={({ isActive }) =>
                       isActive ? "nav-link active" : "nav-link"
@@ -87,8 +87,7 @@ export default function Header() {
                   >
                     REGISTER
                   </NavLink>
-                </li>
-                <li className="nav-item">
+                  <span className="opacity-50">/</span>
                   <NavLink
                     className={({ isActive }) =>
                       isActive ? "nav-link active" : "nav-link"

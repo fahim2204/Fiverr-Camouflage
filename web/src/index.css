@@ -306,7 +306,10 @@ a:hover {
     border: 1px solid var(--cam-primary);
     box-shadow: 0 0 10px 0px var(--cam-primary);
 }
-
+#navbarSupportedContent .navbar-nav .nav-link{
+    font-weight: 600;
+    color: white;
+}
 #navbarSupportedContent .navbar-nav .show>.nav-link,
 #navbarSupportedContent .navbar-nav .nav-link.active {
     /* color: var(--cam-primary); */

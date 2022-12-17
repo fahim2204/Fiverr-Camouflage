@@ -1,6 +1,6 @@
 //Import React Library
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Swiper, SwiperSlide } from "swiper/react";
 import axios from "axios";
@@ -22,6 +22,19 @@ import { Images } from "../utils/images";
 export default function Index() {
   const [homeImage, setHomeImage] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [localToken, setLocalToken] = useState();
+  const navigate = useNavigate();
+
+  const gotoDetectImg = () => {
+    if (localToken) {
+      navigate("/image");
+    }else{
+      navigate("/login");
+    }
+  };
+  useEffect(() => {
+    setLocalToken(localStorage.getItem("token"));
+  }, []);
 
   useEffect(() => {
     axios
@@ -112,10 +125,10 @@ export default function Index() {
       )}
       <div className="my-5">
         <div className="text-center">
-          <Link to={`/image`} className="btn-cam-primary">
+          <div onClick={gotoDetectImg} className="btn-cam-primary">
             <BiCamera className="fs-4 mx-2" />
-            <span>Detect Image</span>
-          </Link>
+            <span>Show Results</span>
+          </div>
         </div>
       </div>
       <Footer />
